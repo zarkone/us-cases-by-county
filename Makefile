@@ -1,6 +1,8 @@
 install:
 	sudo curl -L https://github.com/liquidata-inc/dolt/releases/latest/download/install.sh | sudo bash
 create:
+	dolt config --global --add user.name "github action"
+	dolt config --global --add user.email "actions@github.com"
 	dolt init
 	dolt sql -q 'CREATE TABLE county_records ( \
 	  `date` TEXT, \
