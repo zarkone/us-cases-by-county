@@ -4,16 +4,7 @@ create:
 	dolt config --global --add user.name "github action"
 	dolt config --global --add user.email "actions@github.com"
 	dolt init
-	dolt sql -q 'CREATE TABLE county_records ( \
-	  `date` TEXT, \
-	  `county` TEXT, \
-	  `state` TEXT, \
-	  `fips` TEXT, \
-	  `cases` int, \
-	  `deaths` int,\
-	  PRIMARY KEY (`date`,county,state) \
-	);'
-
+	dolt sql -q 'CREATE TABLE county_records ( `date` TEXT, `county` TEXT, `state` TEXT, `fips` TEXT, `cases` int, `deaths` int, PRIMARY KEY (`date`,county,state) );'
 download:
 	curl 'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv' > us-counties.csv
 
