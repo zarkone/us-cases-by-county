@@ -17,7 +17,7 @@ normalize-fields:
 	dolt sql -q 'update county_records set d_date = cast(`date` as date), county = lower(county), state = lower(state) '
 
 sum-by-county:
-	dolt sql -q "select state,county, SUM(cases) as total from county_records group by state, county order by total asc"  -r csv > total.csv
+	dolt sql -q "select state,county, MAX(d_date) as d_date, cases as total from county_records group by state, county order by total asc"  -r csv > total.csv
 
 clean:
 	rm -rf ./.dolt ./*.csv
