@@ -1,7 +1,4 @@
-on:
-  schedule:
-    - cron:  '*/55 * * * *'
-  push:
+on: push
 jobs:
   csv:
     runs-on: ubuntu-latest
